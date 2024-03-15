@@ -1,7 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/Greeting';
 const pageTitle = "Página de inicio";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <h2>Mi impresionante subtítulo del blog</h2>
+  <!-- Este botón no funciona 
+  <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} /> -->
+  <!-- Este botón si funciona, porque la directiva client:load le dice a Astro que envíe y vuelva a ejecutar tu Javas+Script en el cliente cuando la página cargue, haciendo que el componente sea interactivo. Eso se llama un componente hidratado.  -->
+  <!-- 
+    Cliente:visible => solo enviará el javascript cuando el componente sea visible en el viewport
+   -->
+  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>
